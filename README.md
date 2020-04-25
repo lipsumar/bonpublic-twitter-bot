@@ -1,4 +1,4 @@
-# Robert Twitter Bot
+# bonpublic Twitter Bot
 
 This is the app behind [@bonpublic](https://twitter.com/bonpublic).
 

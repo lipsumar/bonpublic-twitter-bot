@@ -14,7 +14,7 @@ async function getText(){
   return resp.data.text
 }
 
-cron.schedule('* 12,17 * * *', async () => {
+async function replyToRobert () {
 
   await pause(60*1000 + Math.random()*20*60*1000)
   try{
@@ -25,7 +25,7 @@ cron.schedule('* 12,17 * * *', async () => {
       console.log('already replied...')
     }else{
       console.log('not yet replied!')
-      const text = getText()
+      const text = await getText()
       postReply(text, lastTweet)
       console.log('Tweeted: ' + text)
     }
@@ -34,4 +34,6 @@ cron.schedule('* 12,17 * * *', async () => {
     console.log('Error!', err)
   }
 
-});
+}
+replyToRobert()
+cron.schedule('* 12,17 * * *', replyToRobert);

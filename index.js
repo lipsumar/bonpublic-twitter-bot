@@ -2,6 +2,9 @@ require('dotenv').config();
 const axios = require('axios')
 const cron = require('node-cron');
 const { getLatestTweets, postReply } = require('./twitterLib');
+const TwitterListener = require('./TwitterListener');
+const mentionListener = new TwitterListener(require('./credentials'))
+
 
 function pause(ms){
   return new Promise(resolve => {
@@ -14,9 +17,12 @@ async function getText(){
   return resp.data.text
 }
 
-async function replyToRobert () {
+async function replyToRobert (pauseBefore = true) {
 
-  await pause(60*1000 + Math.random()*20*60*1000)
+  if(pauseBefore){
+    await pause(60*1000 + Math.random()*10*60*1000)
+  }
+  
   try{
     const [lastTweet] = await getLatestTweets('robertessayer', 1);
     const selfLatestTweets = await getLatestTweets('bonpublic', 5);
@@ -35,5 +41,14 @@ async function replyToRobert () {
   }
 
 }
-replyToRobert()
+replyToRobert(false)
 cron.schedule('* 14,19 * * *', replyToRobert);
+
+
+mentionListener.listenTo(['@bonpublic'])
+mentionListener.on('tweet', async (tweet) => {
+  console.log('Mention!', tweet.text)
+  const text = await getText();
+  postReply(text, tweet);
+})
+mentionListener.startListening();

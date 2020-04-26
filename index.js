@@ -42,7 +42,7 @@ async function replyToRobert (pauseBefore = true) {
 
 }
 replyToRobert(false)
-cron.schedule('* 14,19 * * *', replyToRobert);
+cron.schedule('0 14,19 * * *', replyToRobert);
 
 
 mentionListener.listenTo(['@bonpublic'])

@@ -56,7 +56,8 @@ mentionListener.on('tweet', async (tweet) => {
 })
 mentionListener.startListening();
 
-(async () => {
-  const text = await getText();
-  console.log('=>', text)
-})()
+axios.get('https://automotron-v2.lipsumar.io/api/generators/0Shh5ZhGe/run').then(resp => {
+  console.log(resp)
+}).catch(err => {
+  console.log(err)
+})

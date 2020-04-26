@@ -55,3 +55,8 @@ mentionListener.on('tweet', async (tweet) => {
   postReply(text, tweet);
 })
 mentionListener.startListening();
+
+(async () => {
+  const text = await getText();
+  console.log('=>', text)
+})()

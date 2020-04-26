@@ -36,4 +36,4 @@ async function replyToRobert () {
 
 }
 replyToRobert()
-cron.schedule('* 12,17 * * *', replyToRobert);
+cron.schedule('* 14,19 * * *', replyToRobert);

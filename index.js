@@ -55,9 +55,3 @@ mentionListener.on('tweet', async (tweet) => {
   postReply(text, tweet);
 })
 mentionListener.startListening();
-
-axios.get('https://automotron-v2.lipsumar.io/api/generators/0Shh5ZhGe/run').then(resp => {
-  console.log(resp)
-}).catch(err => {
-  console.log(err)
-})

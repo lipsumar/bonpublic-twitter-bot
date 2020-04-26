@@ -12,6 +12,7 @@ async function getLatestTweets(screenName, max){
 }
 
 async function postTweet(text, opts){
+  console.log('statuses/update', text, opts)
   return new Promise((resolve, reject) => {
     client.post(
       'statuses/update', 

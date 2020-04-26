@@ -49,6 +49,7 @@ mentionListener.listenTo(['@bonpublic'])
 mentionListener.on('tweet', async (tweet) => {
   console.log('Mention!', tweet.text)
   const text = await getText();
+  console.log('reply =>', text)
   postReply(text, tweet);
 })
 mentionListener.startListening();

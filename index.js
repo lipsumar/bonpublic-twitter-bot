@@ -13,9 +13,7 @@ function pause(ms){
 }
 
 async function getText(){
-  console.log('getting text...')
   const resp = await axios.get(`${process.env.AUTOMOTRON_BASE_URL}/api/generators/0Shh5ZhGe/run`)
-  console.log('got', resp)
   return resp.data.text
 }
 

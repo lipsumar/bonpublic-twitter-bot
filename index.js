@@ -13,7 +13,9 @@ function pause(ms){
 }
 
 async function getText(){
+  console.log('getting text...')
   const resp = await axios.get('https://automotron-v2.lipsumar.io/api/generators/0Shh5ZhGe/run')
+  console.log('got', resp)
   return resp.data.text
 }
 
